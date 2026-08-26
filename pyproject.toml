@@ -1,0 +1,20 @@
+[project]
+name = "solar-pv-fault-detection"
+version = "0.1.0"
+description = "Machine Learning based Solar PV Fault Detection System"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "scikit-learn",
+    "matplotlib",
+    "seaborn",
+    "jupyter",
+    "xgboost",
+    "imbalanced-learn",
+    "shap",
+    "fastapi",
+    "uvicorn[standard]",
+]
