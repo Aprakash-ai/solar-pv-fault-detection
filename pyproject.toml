@@ -17,4 +17,5 @@ dependencies = [
     "shap",
     "fastapi",
     "uvicorn[standard]",
+    "pandas-stubs~=3.0.5",
 ]

@@ -1,0 +1,6 @@
+fault_label,count,percentage
+Normal,1162931,84.65
+Shadowing,188473,13.72
+Degradation,10371,0.75
+Open Circuit,6024,0.44
+Short Circuit,5999,0.44
