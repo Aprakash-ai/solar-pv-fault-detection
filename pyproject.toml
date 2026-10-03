@@ -19,4 +19,5 @@ dependencies = [
     "uvicorn[standard]",
     "pandas-stubs~=3.0.5",
     "scipy-stubs~=1.18.1",
+    "joblib>=1.5.3",
 ]

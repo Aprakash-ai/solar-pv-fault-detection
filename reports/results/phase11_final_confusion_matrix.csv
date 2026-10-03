@@ -1,0 +1,6 @@
+,Normal,Short Circuit,Degradation,Open Circuit,Shadowing
+Normal,232506,0,0,0,80
+Short Circuit,0,1198,1,0,1
+Degradation,0,0,2067,5,2
+Open Circuit,0,0,1,1204,0
+Shadowing,109,1,4,0,37581
