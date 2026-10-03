@@ -129,7 +129,3 @@ Final Evaluation
 Explainable AI
         ↓
 Final ML Pipeline
-        ↓
-FastAPI
-        ↓
-React + Firebase Application
