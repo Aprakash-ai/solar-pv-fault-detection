@@ -50,4 +50,4 @@ models/*.joblib
 # ==============================
 # Large Dataset Files
 # ==============================
-dataset/raw/
+dataset/raw/*.mat
