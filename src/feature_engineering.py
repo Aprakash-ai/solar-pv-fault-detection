@@ -8,6 +8,7 @@ identical in both places.
 """
 
 import pandas as pd
+from sklearn.preprocessing import FunctionTransformer
 
 
 def add_engineered_features(df: pd.DataFrame) -> pd.DataFrame:
@@ -40,6 +41,9 @@ def add_engineered_features(df: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
+def get_feature_engineering_transformer():
+    """Wraps add_engineered_features as a sklearn-compatible transformer."""
+    return FunctionTransformer(add_engineered_features)
 
 if __name__ == "__main__":
     from data_loader import load_pv_dataset
