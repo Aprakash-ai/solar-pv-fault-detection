@@ -5,6 +5,7 @@ Loads the saved pipeline (feature engineering + tuned XGBoost) and exposes
 a /predict endpoint that takes the 6 raw sensor readings.
 """
 
+import os
 import sys
 from pathlib import Path
 
@@ -24,14 +25,21 @@ MODEL_PATH = PROJECT_ROOT / "models" / "pv_fault_pipeline.pkl"
 RAW_FEATURES = ["vdc1", "vdc2", "idc1", "idc2", "irr", "pvt"]
 FAULT_NAMES = ["Normal", "Short Circuit", "Degradation", "Open Circuit", "Shadowing"]
 
+# Comma-separated list of allowed frontend origins, set via the ALLOWED_ORIGINS
+# environment variable in production (e.g. "https://my-app.web.app,https://my-app.firebaseapp.com").
+ALLOWED_ORIGINS = [
+    origin.strip()
+    for origin in os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(",")
+    if origin.strip()
+]
+
 pipeline = joblib.load(MODEL_PATH)
 
 app = FastAPI(title="Solar PV Fault Detection API", version="1.0.0")
 
-# Allow the React dev server to call this API (tighten this at deploy time)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_methods=["*"],
     allow_headers=["*"],
 )
