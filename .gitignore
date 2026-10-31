@@ -51,3 +51,5 @@ models/*.joblib
 # Large Dataset Files
 # ==============================
 dataset/raw/*.mat
+
+.env

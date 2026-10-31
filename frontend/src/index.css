@@ -1,0 +1,159 @@
+:root {
+  color-scheme: dark;
+
+  --ink: #06080f;
+  --surface: #0c1120;
+  --surface-2: #121933;
+  --text: #e9edf9;
+  --muted: #8d97b8;
+  --faint: #5b6586;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --glass: rgba(255, 255, 255, 0.04);
+
+  --amber: #ffc24b;
+  --amber-2: #ff8a3d;
+  --cyan: #4de1ff;
+  --grad-sun: linear-gradient(135deg, #ffd36b 0%, #ff9d42 55%, #ff7a45 100%);
+
+  --normal: #38e0a1;
+  --short-circuit: #ff5d6c;
+  --degradation: #ff9f5a;
+  --open-circuit: #a98bff;
+  --shadowing: #4db8ff;
+
+  --font-display: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  --radius-sm: 8px;
+  --radius-lg: 18px;
+
+  /* Legacy names, used by Login/Dashboard until they are redesigned */
+  --midnight: var(--ink);
+  --lapis: var(--surface);
+  --gold: var(--amber);
+  --champagne: #ffe0a1;
+  --ivory: var(--text);
+  --mist: var(--muted);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--champagne);
+}
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+/* Shared buttons */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 24px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.2s, background-color 0.2s;
+}
+
+.btn-sm {
+  padding: 9px 18px;
+  font-size: 0.88rem;
+  border-radius: 10px;
+}
+
+.btn-primary {
+  background: var(--grad-sun);
+  color: #1a1204;
+  box-shadow: 0 8px 30px -10px rgba(255, 157, 66, 0.65);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px -10px rgba(255, 157, 66, 0.85);
+}
+
+.btn-primary:hover::after {
+  transform: translateX(120%);
+}
+
+.btn-ghost {
+  border-color: var(--line-strong);
+  background: var(--glass);
+  color: var(--text);
+  backdrop-filter: blur(8px);
+}
+
+.btn-ghost:hover {
+  border-color: rgba(255, 194, 75, 0.55);
+  background: rgba(255, 194, 75, 0.07);
+}
+
+/* Scroll reveal (class is toggled by useReveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
